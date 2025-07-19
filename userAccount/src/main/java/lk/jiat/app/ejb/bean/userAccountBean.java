@@ -3,5 +3,5 @@ package lk.jiat.app.ejb.bean;
 import jakarta.ejb.Stateless;
 
 @Stateless
-public class userAccountBean {
+public class userAccountBean implements UserAccountServise{
 }
