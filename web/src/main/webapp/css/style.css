@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: white;
+}
+
+.header {
+    background: #f2f2f2;
+    padding: 0px 0;
+    text-align: center;
+}
+
+.logo {
+    height:120px;
+}
+
+.nav-bar {
+    background: linear-gradient(to bottom, #7f0000, #934646);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.nav-bar .active {
+    font-weight: bold;
+}
+
+.login-container {
+    background: linear-gradient(to bottom, #8c1b1b, #d58888);
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box {
+    background: white;
+    padding: 30px;
+    border-radius: 6px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.login-box input[type="text"],
+.login-box input[type="password"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px;
+}
+
+.login-box button {
+    background-color: #690000;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.footer {
+    background: #f0f0f0;
+    text-align: center;
+    padding: 15px;
+    font-size: 12px;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #0076d6;
+}
