@@ -27,7 +27,13 @@
         </dependency>
         <dependency>
             <groupId>lk.jiat.app</groupId>
-            <artifactId>ejb</artifactId>
+            <artifactId>auth</artifactId>
+            <version>1.0</version>
+            <type>ejb</type>
+        </dependency>
+        <dependency>
+            <groupId>lk.jiat.app</groupId>
+            <artifactId>userAccount</artifactId>
             <version>1.0</version>
             <type>ejb</type>
         </dependency>
@@ -51,9 +57,14 @@
                     <modules>
                             <ejbModule>
                                 <groupId>lk.jiat.app</groupId>
-                                <artifactId>ejb</artifactId>
-                                <bundleFileName>ejb-module.jar</bundleFileName>
+                                <artifactId>auth</artifactId>
+                                <bundleFileName>auth-module.jar</bundleFileName>
                             </ejbModule>
+                        <ejbModule>
+                            <groupId>lk.jiat.app</groupId>
+                            <artifactId>userAccount</artifactId>
+                            <bundleFileName>userAccount-module.jar</bundleFileName>
+                        </ejbModule>
                             <webModule>
                                 <groupId>lk.jiat.app</groupId>
                                 <artifactId>web</artifactId>

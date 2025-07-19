@@ -9,8 +9,9 @@
         <version>1.0</version>
     </parent>
 
-    <artifactId>core</artifactId>
-    <name>j2ee-ass-core</name>
+    <artifactId>userAccount</artifactId>
+    <packaging>ejb</packaging>
+    <name>j2ee-ass-userAccount-ejb</name>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -20,17 +21,15 @@
 
     <dependencies>
         <dependency>
-            <groupId>jakarta.persistence</groupId>
-            <artifactId>jakarta.persistence-api</artifactId>
-            <version>3.1.0</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
             <groupId>jakarta.platform</groupId>
             <artifactId>jakarta.jakartaee-api</artifactId>
             <scope>provided</scope>
         </dependency>
-
+        <dependency>
+            <groupId>lk.jiat.app</groupId>
+            <artifactId>core</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 
     <build>

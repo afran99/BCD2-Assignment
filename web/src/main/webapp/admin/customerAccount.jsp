@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #3498db;
+            --primary-color: #a42929;
             --secondary-color: #540e0e;
             --success-color: #2ecc71;
             --info-color: #1abc9c;
@@ -299,39 +299,39 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="${pageContext.request.contextPath}/addAccount" method="post">
                     <div class="mb-3 row">
                         <div class="col-md-6">
                             <label for="firstName" class="form-label">First Name</label>
-                            <input type="text" class="form-control" id="firstName" required>
+                            <input type="text" class="form-control" id="firstName" name="firstName" required>
                         </div>
                         <div class="col-md-6">
                             <label for="lastName" class="form-label">Last Name</label>
-                            <input type="text" class="form-control" id="lastName" required>
+                            <input type="text" class="form-control" id="lastName" name="lastName" required>
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <div class="col-md-6">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" required>
+                            <input type="email" class="form-control" id="email" name="email" required>
                         </div>
                         <div class="col-md-6">
                             <label for="phone" class="form-label">Phone</label>
-                            <input type="tel" class="form-control" id="phone" required>
+                            <input type="tel" class="form-control" id="phone" name="phone" required>
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="address" class="form-label">Address</label>
-                        <textarea class="form-control" id="address" rows="2"></textarea>
+                        <textarea class="form-control" id="address" name="address" rows="2"></textarea>
                     </div>
                     <div class="mb-3 row">
                         <div class="col-md-6">
                             <label for="dob" class="form-label">Date of Birth</label>
-                            <input type="date" class="form-control" id="dob">
+                            <input type="date" class="form-control" id="dob" name="dob">
                         </div>
                         <div class="col-md-6">
                             <label for="accountType" class="form-label">Account Type</label>
-                            <select class="form-select" id="accountType">
+                            <select class="form-select" id="accountType" name="accountType">
                                 <option selected>Select Account Type</option>
                                 <option>Savings</option>
                                 <option>Checking</option>
@@ -347,11 +347,12 @@
                             <input type="number" class="form-control" id="initialDeposit" value="0.00" step="0.01">
                         </div>
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn axisBtn">Create Account</button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn axisBtn">Create Account</button>
+                    </div>
+
+            </form>
             </div>
         </div>
     </div>
