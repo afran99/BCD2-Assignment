@@ -12,20 +12,27 @@ import lk.jiat.app.core.service.AccountTypeService;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/admin/customerAccount.jsp")
-public class UserAccounts  extends HttpServlet {
+@WebServlet("/customerAccount")
+public class CustomerAccount extends HttpServlet {
     @EJB
     private AccountTypeService accountTypeService;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        System.out.println("ok");
+
         try {
+
             List<AccountType> accountTypes = accountTypeService.getAllAccountTypes();
+            for (AccountType accountType: accountTypes){
+                System.out.println(accountType.getType());
+            }
             request.setAttribute("accountTypes", accountTypes);
             request.getRequestDispatcher("/admin/customerAccount.jsp").forward(request, response);
         }catch (Exception e){
             System.out.println("error");
         }
+
     }
 }

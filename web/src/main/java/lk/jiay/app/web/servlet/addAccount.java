@@ -17,6 +17,7 @@ import lk.jiat.app.core.service.UserAccountService;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 import java.util.logging.Logger;
 @ServletSecurity(@HttpConstraint(rolesAllowed = {"ADMIN"}))
@@ -51,7 +52,9 @@ public class addAccount extends HttpServlet {
 
         AccountType accountType = null;
         try {
-            accountType = accountTypeService.getAccountTypeById(Integer.parseInt(acType));
+            List<AccountType> accountTypes = accountTypeService.getAllAccountTypes();
+            request.setAttribute("accountTypes", accountTypes);
+
         }catch (NumberFormatException e){
             log("Account type not found");
         }

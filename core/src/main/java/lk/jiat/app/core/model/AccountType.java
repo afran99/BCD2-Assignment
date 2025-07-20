@@ -8,7 +8,7 @@ import java.io.Serializable;
 @Table(name = "accountType")
 @NamedQueries({
         @NamedQuery(name = "AccountType.findById", query = "select a from AccountType a where a.id=:id"),
-        @NamedQuery(name = "AccountType.findAl", query = "select a from AccountType a"),
+        @NamedQuery(name = "AccountType.findAll", query = "select a from AccountType a"),
         @NamedQuery(name = "AccountType.findByType", query = "select a from AccountType a where a.type=:type"),
 })
 public class AccountType implements Serializable {
