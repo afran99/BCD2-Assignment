@@ -21,24 +21,6 @@ public class accountTypeSessionBean implements AccountTypeService {
     @PersistenceContext
     private EntityManager em;
 
-    public List<AccountType> getAllAccountType(){
-        List<AccountType> accountTypes = null;
-        try {
-            accountTypes = em.createQuery("SELECT a FROM AccountType a", AccountType.class)
-                    .getResultList();
-            if (accountTypes.isEmpty()) {
-                LOG.log(Level.INFO, "No account types found in database");
-                return Collections.emptyList();
-            }
-
-            return accountTypes;
-
-        } catch (PersistenceException e) {
-            LOG.log(Level.SEVERE, "Error retrieving account types from database", e);
-            throw new RuntimeException("Failed to retrieve account types", e);
-        }
-    }
-
     @Override
     public AccountType getAccountTypeById(int id) {
         return em.find(AccountType.class, id);
@@ -62,5 +44,24 @@ public class accountTypeSessionBean implements AccountTypeService {
     @Override
     public void deleteAccountType(int accountType) {
         em.remove(getAccountTypeById(accountType));
+    }
+
+    @Override
+    public List<AccountType> getAllAccountTypes() {
+        List<AccountType> accountTypes = null;
+        try {
+            accountTypes = em.createQuery("SELECT a FROM AccountType a", AccountType.class)
+                    .getResultList();
+            if (accountTypes.isEmpty()) {
+                LOG.log(Level.INFO, "No account types found in database");
+                return Collections.emptyList();
+            }
+
+            return accountTypes;
+
+        } catch (PersistenceException e) {
+            LOG.log(Level.SEVERE, "Error retrieving account types from database", e);
+            throw new RuntimeException("Failed to retrieve account types", e);
+        }
     }
 }
