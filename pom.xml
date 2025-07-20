@@ -16,6 +16,7 @@
         <module>userAccount</module>
         <module>accountType</module>
         <module>frequency</module>
+        <module>newScheduleTransfer</module>
     </modules>
 
     <properties>

@@ -309,7 +309,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="${pageContext.request.contextPath}/newST" method="post">
                     <div class="mb-3">
                         <label for="fromAccount" class="form-label">From Account</label>
                         <select class="form-select" id="fromAccount" name="fromAccount" required>
@@ -323,7 +323,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="toAccount" class="form-label">To Account</label>
-                        <select class="form-select" id="toAccount" required>
+                        <select class="form-select" id="toAccount" name="toAccount" required>
                             <option selected>Select Account</option>
                             <c:forEach var = "account" items="${userAccounts}">
                                 <option value="${account.accountNumber}">
@@ -336,17 +336,17 @@
                         <label for="amount" class="form-label">Amount</label>
                         <div class="input-group">
                             <span class="input-group-text">$</span>
-                            <input type="number" class="form-control" id="amount" value="0.00" step="0.01" required>
+                            <input type="number" class="form-control" id="amount" name="amount" value="0.00" step="0.01" required>
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <div class="col-md-6">
                             <label for="transferDate" class="form-label">Transfer Date</label>
-                            <input type="date" class="form-control" id="transferDate" required>
+                            <input type="date" class="form-control" id="transferDate" name="transferDate" required>
                         </div>
                         <div class="col-md-6">
                             <label for="transferTime" class="form-label">Transfer Time</label>
-                            <input type="time" class="form-control" id="transferTime" required>
+                            <input type="time" class="form-control" id="transferTime" name="transferTime" required>
                         </div>
                     </div>
                     <div class="mb-3">
@@ -359,14 +359,15 @@
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Description</label>
-                        <textarea class="form-control" id="description" rows="2"></textarea>
+                        <textarea class="form-control" id="description" name="description" rows="2"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn axisBtn">Schedule Transfer</button>
                     </div>
                 </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn axisBtn">Schedule Transfer</button>
-            </div>
+
         </div>
     </div>
 </div>
