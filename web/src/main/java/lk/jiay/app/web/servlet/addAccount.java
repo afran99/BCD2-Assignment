@@ -25,7 +25,8 @@ import java.util.logging.Logger;
 public class addAccount extends HttpServlet {
 
     private static final Logger LOG = Logger.getLogger(addAccount.class.getName());
-    @Inject
+
+    @EJB
     private AccountTypeService accountTypeService;
 
     @EJB
@@ -34,6 +35,9 @@ public class addAccount extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        System.out.println("add acount ok");
+
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         String email = request.getParameter("email");
@@ -42,43 +46,70 @@ public class addAccount extends HttpServlet {
         String dob = request.getParameter("dob");
         String acType = request.getParameter("accountType");
         String balance = request.getParameter("balance");
+
+
+        System.out.println(firstName);
+        System.out.println(lastName);
+        System.out.println(email);
+        System.out.println(phone);
+        System.out.println(address);
+        System.out.println(dob);
+        System.out.println(acType);
+        System.out.println(Double.parseDouble(balance));
+
+
+
         Date birthDay = null;
         try {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             birthDay = dateFormat.parse(dob);
         } catch (Exception e){
-            log("a");
+            log("Invalid date format");
         }
-
+//
         AccountType accountType = null;
         try {
-            List<AccountType> accountTypes = accountTypeService.getAllAccountTypes();
-            request.setAttribute("accountTypes", accountTypes);
-
-        }catch (NumberFormatException e){
-            log("Account type not found");
+            int typeId = Integer.parseInt(acType);
+            accountType = accountTypeService.getAccountTypeById(typeId);
+        } catch (Exception e) {
+            log("Account type retrieval failed: " + e.getMessage());
         }
-
+//
         int accountNumber;
         Random random = new Random();
         do {
             accountNumber = 10000000 + random.nextInt(90000000);
             LOG.info(String.valueOf(accountNumber));
-        } while (userAccountService.getAllUserAccount(accountNumber) != null);
+        } while (userAccountService.getAllUserAccount(accountNumber) == null);
 
-        UserAccount userAccount =  new UserAccount();
-        userAccount.setAccountNumber(accountNumber);
-        userAccount.setFirstName(firstName);
-        userAccount.setLastName(lastName);
-        userAccount.setEmail(email);
-        userAccount.setPhone(phone);
-        userAccount.setAddress(address);
-        userAccount.setBirthDate(birthDay);
-        userAccount.setAccountType(accountType);
-        userAccount.setBalance(Double.parseDouble(balance));
-        userAccount.getCreatedDate(new Date());
+        double price = 0.0;
+        try {
+            price = Double.parseDouble(balance);
+        } catch (NumberFormatException e) {
+            log("Invalid balance");
+        }
+
+        Date createdDate = new Date();
+
+        UserAccount userAccount = new UserAccount(accountNumber, firstName, lastName, email,phone, address, birthDay,
+                createdDate, "Active", price, accountType);
+        userAccountService.addUserAccount(userAccount);
 
         response.sendRedirect(request.getContextPath()+"/admin/customerAccount.jsp");
+//
+//        UserAccount userAccount =  new UserAccount();
+//        userAccount.setAccountNumber(accountNumber);
+//        userAccount.setFirstName(firstName);
+//        userAccount.setLastName(lastName);
+//        userAccount.setEmail(email);
+//        userAccount.setPhone(phone);
+//        userAccount.setAddress(address);
+//        userAccount.setBirthDate(birthDay);
+//        userAccount.setAccountType(accountType);
+//        userAccount.setBalance(Double.parseDouble(balance));
+//        userAccount.getCreatedDate(new Date());
+//
+//        response.sendRedirect(request.getContextPath()+"/admin/customerAccount.jsp");
 
     }
 }

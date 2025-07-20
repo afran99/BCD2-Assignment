@@ -341,10 +341,10 @@
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="initialDeposit" class="form-label">Initial Deposit</label>
+                        <label for="balance" class="form-label">Initial Deposit</label>
                         <div class="input-group">
                             <span class="input-group-text">$</span>
-                            <input type="number" class="form-control" id="initialDeposit" value="0.00" step="0.01">
+                            <input type="number" class="form-control" id="balance" name="balance" value="0.00" step="0.01">
                         </div>
                     </div>
                     <div class="modal-footer">

@@ -27,6 +27,23 @@ public class UserAccount implements Serializable {
     private String status;
     private Double balance;
 
+    public UserAccount() {
+    }
+
+    public UserAccount(int accountNumber, String firstName, String lastName, String email, String phone, String address, Date birthDate, Date createdDate, String status, Double balance, AccountType accountType) {
+        this.accountNumber = accountNumber;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
+        this.birthDate = birthDate;
+        this.createdDate = createdDate;
+        this.status = status;
+        this.balance = balance;
+        this.accountType = accountType;
+    }
+
     @ManyToOne
     @JoinColumn(name = "id")
     private AccountType accountType;
