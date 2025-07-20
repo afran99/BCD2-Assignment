@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Afran
@@ -332,11 +333,10 @@
                         <div class="col-md-6">
                             <label for="accountType" class="form-label">Account Type</label>
                             <select class="form-select" id="accountType" name="accountType">
-                                <option selected>Select Account Type</option>
-                                <option>Savings</option>
-                                <option>Checking</option>
-                                <option>Business</option>
-                                <option>Student</option>
+                                <option value="">Select Account Type</option>
+                                <c:forEach var="type" items="${accountTypes}">
+                                    <option value="${type.id}">${type.type}</option>
+                                </c:forEach>
                             </select>
                         </div>
                     </div>
