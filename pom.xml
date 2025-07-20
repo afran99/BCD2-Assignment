@@ -15,6 +15,7 @@
         <module>core</module>
         <module>userAccount</module>
         <module>accountType</module>
+        <module>frequency</module>
     </modules>
 
     <properties>

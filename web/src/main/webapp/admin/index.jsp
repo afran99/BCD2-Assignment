@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -198,7 +200,7 @@
             </div>
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">
+                    <a class="nav-link active" href="${pageContext.request.contextPath}/dashboard">
                         <i class="fas fa-tachometer-alt"></i> Dashboard
                     </a>
                 </li>
@@ -208,7 +210,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/admin/scheduledTransfers.jsp">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/scheduleTransfer">
                         <i class="fas fa-exchange-alt"></i> Scheduled Transfers
                     </a>
                 </li>
@@ -362,71 +364,23 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>John Smith</td>
-                                <td>ACC-10025</td>
-                                <td>Savings</td>
-                                <td>$5,420.50</td>
-                                <td><span class="status-active">Active</span></td>
-                                <td>Today, 10:15 AM</td>
-                                <td>
-                                    <button class="btn btn-sm btn-outline-primary action-btn"><i class="fas fa-eye"></i></button>
-                                    <button class="btn btn-sm btn-outline-success action-btn"><i class="fas fa-edit"></i></button>
-                                    <button class="btn btn-sm btn-outline-danger action-btn"><i class="fas fa-trash"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Emily Johnson</td>
-                                <td>ACC-10038</td>
-                                <td>Checking</td>
-                                <td>$3,210.00</td>
-                                <td><span class="status-active">Active</span></td>
-                                <td>Today, 9:30 AM</td>
-                                <td>
-                                    <button class="btn btn-sm btn-outline-primary action-btn"><i class="fas fa-eye"></i></button>
-                                    <button class="btn btn-sm btn-outline-success action-btn"><i class="fas fa-edit"></i></button>
-                                    <button class="btn btn-sm btn-outline-danger action-btn"><i class="fas fa-trash"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Michael Brown</td>
-                                <td>ACC-10042</td>
-                                <td>Savings</td>
-                                <td>$1,200.00</td>
-                                <td><span class="status-pending">Pending</span></td>
-                                <td>Yesterday, 2:45 PM</td>
-                                <td>
-                                    <button class="btn btn-sm btn-outline-primary action-btn"><i class="fas fa-eye"></i></button>
-                                    <button class="btn btn-sm btn-outline-success action-btn"><i class="fas fa-edit"></i></button>
-                                    <button class="btn btn-sm btn-outline-danger action-btn"><i class="fas fa-trash"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Sarah Williams</td>
-                                <td>ACC-10056</td>
-                                <td>Business</td>
-                                <td>$12,780.25</td>
-                                <td><span class="status-active">Active</span></td>
-                                <td>Yesterday, 11:20 AM</td>
-                                <td>
-                                    <button class="btn btn-sm btn-outline-primary action-btn"><i class="fas fa-eye"></i></button>
-                                    <button class="btn btn-sm btn-outline-success action-btn"><i class="fas fa-edit"></i></button>
-                                    <button class="btn btn-sm btn-outline-danger action-btn"><i class="fas fa-trash"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>David Miller</td>
-                                <td>ACC-10061</td>
-                                <td>Checking</td>
-                                <td>$890.50</td>
-                                <td><span class="status-inactive">Inactive</span></td>
-                                <td>3 days ago</td>
-                                <td>
-                                    <button class="btn btn-sm btn-outline-primary action-btn"><i class="fas fa-eye"></i></button>
-                                    <button class="btn btn-sm btn-outline-success action-btn"><i class="fas fa-edit"></i></button>
-                                    <button class="btn btn-sm btn-outline-danger action-btn"><i class="fas fa-trash"></i></button>
-                                </td>
-                            </tr>
+                            <c:forEach var = "account" items="${userAccounts}">
+                                <tr>
+                                    <td>${account.firstName} ${account.lastName}</td>
+                                    <td>${account.accountNumber}</td>
+                                    <td>${account.accountType.type}</td>
+                                    <td>$${account.balance}</td>
+                                    <td><span class="status-active">${account.status}</span></td>
+                                    <td>
+                                        <fmt:formatDate value="${account.createdDate}" pattern="yyyy-MM-dd"/>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-primary action-btn"><i class="fas fa-eye"></i></button>
+                                        <button class="btn btn-sm btn-outline-success action-btn"><i class="fas fa-edit"></i></button>
+                                        <button class="btn btn-sm btn-outline-danger action-btn"><i class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            </c:forEach>
                             </tbody>
                         </table>
                     </div>

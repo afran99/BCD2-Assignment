@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -124,17 +126,17 @@
             </div>
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/admin">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/dashboard">
                         <i class="fas fa-tachometer-alt"></i> Dashboard
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/admin/customerAccount.jsp"">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/customerAccount">
                         <i class="fas fa-users"></i> Customer Accounts
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="${pageContext.request.contextPath}/admin/scheduledTransfers.jsp">
+                    <a class="nav-link active" href="${pageContext.request.contextPath}/scheduleTransfer">
                         <i class="fas fa-exchange-alt"></i> Scheduled Transfers
                     </a>
                 </li>
@@ -180,20 +182,20 @@
                                 <label for="fromAccountSearch" class="form-label">From Account</label>
                                 <select class="form-select" id="fromAccountSearch">
                                     <option selected>All Accounts</option>
-                                    <option>ACC-10025 - John Smith</option>
-                                    <option>ACC-10038 - Emily Johnson</option>
-                                    <option>ACC-10042 - Michael Brown</option>
-                                    <option>ACC-10056 - Sarah Williams</option>
+                                    <c:forEach var = "account" items="${userAccounts}">
+                                    <option value="${account.accountNumber}">
+                                            ${account.accountNumber}-${account.firstName}${account.lastName}-$${account.balance}
+                                    </option>
+                                    </c:forEach>>
                                 </select>
                             </div>
                             <div class="col-md-4">
                                 <label for="statusSearch" class="form-label">Status</label>
                                 <select class="form-select" id="statusSearch">
-                                    <option selected>All Status</option>
-                                    <option>Pending</option>
-                                    <option>Completed</option>
-                                    <option>Failed</option>
-                                    <option>Cancelled</option>
+                                    <c:forEach var = "frequncy" items="${frequencies}">
+                                        <option value="${frequncy.id}" selected>${frequncy.frequency}</option>
+                                    </c:forEach>
+                                </select>
                                 </select>
                             </div>
                             <div class="col-md-4">
@@ -310,23 +312,24 @@
                 <form>
                     <div class="mb-3">
                         <label for="fromAccount" class="form-label">From Account</label>
-                        <select class="form-select" id="fromAccount" required>
+                        <select class="form-select" id="fromAccount" name="fromAccount" required>
                             <option selected>Select Account</option>
-                            <option>ACC-10025 - John Smith ($5,420.50)</option>
-                            <option>ACC-10038 - Emily Johnson ($3,210.00)</option>
-                            <option>ACC-10042 - Michael Brown ($1,200.00)</option>
-                            <option>ACC-10056 - Sarah Williams ($12,780.25)</option>
+                            <c:forEach var = "account" items="${userAccounts}">
+                                <option value="${account.accountNumber}">
+                                        Acc-${account.accountNumber}-${account.firstName}${account.lastName}-$${account.balance}
+                                </option>
+                            </c:forEach>>
                         </select>
                     </div>
                     <div class="mb-3">
                         <label for="toAccount" class="form-label">To Account</label>
                         <select class="form-select" id="toAccount" required>
                             <option selected>Select Account</option>
-                            <option>ACC-10025 - John Smith ($5,420.50)</option>
-                            <option>ACC-10038 - Emily Johnson ($3,210.00)</option>
-                            <option>ACC-10042 - Michael Brown ($1,200.00)</option>
-                            <option>ACC-10056 - Sarah Williams ($12,780.25)</option>
-                            <option>External Transfer</option>
+                            <c:forEach var = "account" items="${userAccounts}">
+                                <option value="${account.accountNumber}">
+                                    Acc-${account.accountNumber}-${account.firstName}${account.lastName}-$${account.balance}
+                                </option>
+                            </c:forEach>>
                         </select>
                     </div>
                     <div class="mb-3">
@@ -348,12 +351,10 @@
                     </div>
                     <div class="mb-3">
                         <label for="frequency" class="form-label">Frequency</label>
-                        <select class="form-select" id="frequency">
-                            <option selected>One-time</option>
-                            <option>Daily</option>
-                            <option>Weekly</option>
-                            <option>Monthly</option>
-                            <option>Quarterly</option>
+                        <select class="form-select" id="frequency" name="frequency">
+                            <c:forEach var = "frequncy" items="${frequencies}">
+                            <option value="${frequncy.id}" selected>${frequncy.frequency}</option>
+                            </c:forEach>
                         </select>
                     </div>
                     <div class="mb-3">

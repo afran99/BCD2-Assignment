@@ -45,6 +45,12 @@
         </dependency>
         <dependency>
             <groupId>lk.jiat.app</groupId>
+            <artifactId>frequency</artifactId>
+            <version>1.0</version>
+            <type>ejb</type>
+        </dependency>
+        <dependency>
+            <groupId>lk.jiat.app</groupId>
             <artifactId>web</artifactId>
             <version>1.0</version>
             <type>war</type>
@@ -75,6 +81,11 @@
                             <groupId>lk.jiat.app</groupId>
                             <artifactId>accountType</artifactId>
                             <bundleFileName>accountType-module.jar</bundleFileName>
+                        </ejbModule>
+                        <ejbModule>
+                            <groupId>lk.jiat.app</groupId>
+                            <artifactId>frequency</artifactId>
+                            <bundleFileName>frequency-module.jar</bundleFileName>
                         </ejbModule>
                             <webModule>
                                 <groupId>lk.jiat.app</groupId>

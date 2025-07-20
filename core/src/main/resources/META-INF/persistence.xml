@@ -5,6 +5,7 @@
         <class>lk.jiat.app.core.model.User</class>
         <class>lk.jiat.app.core.model.UserAccount</class>
         <class>lk.jiat.app.core.model.AccountType</class>
+        <class>lk.jiat.app.core.model.Frequency</class>
 
         <properties>
             <property name="jakarta.persistence.schema-generation.database.action" value="create"/>

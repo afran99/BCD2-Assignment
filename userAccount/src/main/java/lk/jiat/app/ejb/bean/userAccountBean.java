@@ -40,6 +40,12 @@ public class userAccountBean implements UserAccountService{
     }
 
     @Override
+    public List<UserAccount> getAllUserAccount() {
+        return em.createNamedQuery("UserAccount.findAll",UserAccount.class)
+                .getResultList();
+    }
+
+    @Override
     public void addUserAccount(UserAccount userAccount) {
         em.persist(userAccount);
     }

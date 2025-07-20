@@ -104,7 +104,7 @@ public class UserAccount implements Serializable {
         this.birthDate = birthDate;
     }
 
-    public Date getCreatedDate(Date date) {
+    public Date getCreatedDate() {
         return createdDate;
     }
 

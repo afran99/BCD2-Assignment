@@ -95,21 +95,7 @@ public class addAccount extends HttpServlet {
                 createdDate, "Active", price, accountType);
         userAccountService.addUserAccount(userAccount);
 
-        response.sendRedirect(request.getContextPath()+"/admin/customerAccount.jsp");
-//
-//        UserAccount userAccount =  new UserAccount();
-//        userAccount.setAccountNumber(accountNumber);
-//        userAccount.setFirstName(firstName);
-//        userAccount.setLastName(lastName);
-//        userAccount.setEmail(email);
-//        userAccount.setPhone(phone);
-//        userAccount.setAddress(address);
-//        userAccount.setBirthDate(birthDay);
-//        userAccount.setAccountType(accountType);
-//        userAccount.setBalance(Double.parseDouble(balance));
-//        userAccount.getCreatedDate(new Date());
-//
-//        response.sendRedirect(request.getContextPath()+"/admin/customerAccount.jsp");
+        response.sendRedirect(request.getContextPath()+"/customerAccount");
 
     }
 }
