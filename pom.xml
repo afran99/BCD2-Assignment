@@ -14,6 +14,7 @@
         <module>ear</module>
         <module>core</module>
         <module>userAccount</module>
+        <module>accountType</module>
     </modules>
 
     <properties>

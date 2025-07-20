@@ -7,10 +7,15 @@ import java.util.Date;
 
 @Entity
 @Table(name = "userAccount")
+@NamedQueries({
+        @NamedQuery(name = "UserAccount.findByEmail", query = "select u from UserAccount u where u.email=:email"),
+        @NamedQuery(name = "UserAccount.findAll", query = "select u from UserAccount u"),
+        @NamedQuery(name = "UserAccount.findByAccountType", query = "select u from UserAccount u where u.accountType.type =:accountType")
+
+})
 public class UserAccount implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int accountNumber;
     private String firstName;
     private String lastName;
@@ -22,39 +27,15 @@ public class UserAccount implements Serializable {
     private String status;
     private Double balance;
 
+    @ManyToOne
+    @JoinColumn(name = "id")
+    private AccountType accountType;
+
     public int getAccountNumber() {
         return accountNumber;
     }
 
     public void setAccountNumber(int accountNumber) {
-        this.accountNumber = accountNumber;
-    }
-
-    public Date getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "id")
-    private AccountType accountType;
-
-    public int getId(){
-        return accountNumber;
-    }
-
-    public void setId(int accountNumber){
         this.accountNumber = accountNumber;
     }
 
@@ -104,6 +85,22 @@ public class UserAccount implements Serializable {
 
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
+    }
+
+    public Date getCreatedDate(Date date) {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public Double getBalance() {

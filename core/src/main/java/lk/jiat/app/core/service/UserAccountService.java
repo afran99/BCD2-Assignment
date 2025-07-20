@@ -11,7 +11,7 @@ public interface UserAccountService {
     UserAccount getUserAccountById(int accountNumber);
     UserAccount getUserAccountByEmail(String email);
     List<UserAccount> getUserAccountByAccountType(String type);
-    List<UserAccount> getAllUserAccount();
+    List<UserAccount> getAllUserAccount(int accountNumber);
     void addUserAccount(UserAccount userAccount);
     void updateUserAccount(UserAccount userAccount);
     void deleteUserAccount(int accountNumber);
