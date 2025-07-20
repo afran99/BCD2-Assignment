@@ -1,54 +1,32 @@
 package lk.jiat.app.core.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name = "ScheduledTransfer")
-@NamedQueries({
-
-        @NamedQuery(name = "NewScheduleTransfer.findAll", query = "select nst from NewScheduleTransfer nst")
-})
-public class NewScheduleTransfer implements Serializable {
-
-
+@Table(name = "singleTransaction")
+public class SIngleTransaction implements Serializable {
     @Id
-    private String taskId;
-    private String frequency;
+    private String TaskId;
     private String fromAccount;
     private String toAccount;
     private double amount;
     private Date transferTime;
-
     private String Description;
 
-    public NewScheduleTransfer() {
-    }
-
-    public String getDescription() {
-        return Description;
-    }
-
-    public void setDescription(String description) {
-        Description = description;
+    public SIngleTransaction() {
     }
 
     public String getTaskId() {
-        return taskId;
+        return TaskId;
     }
 
     public void setTaskId(String taskId) {
-        this.taskId = taskId;
-    }
-
-    public String getFrequency() {
-        return frequency;
-    }
-
-    public void setFrequency(String frequency) {
-        this.frequency = frequency;
+        TaskId = taskId;
     }
 
     public String getFromAccount() {
@@ -83,5 +61,11 @@ public class NewScheduleTransfer implements Serializable {
         this.transferTime = transferTime;
     }
 
+    public String getDescription() {
+        return Description;
+    }
 
+    public void setDescription(String description) {
+        Description = description;
+    }
 }
